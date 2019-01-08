@@ -35,6 +35,9 @@
 *.swp
 *.swo
 *~
+*.cmake
+CMakeCache.txt
 
 # Direcotries
 **/test
+**/CMakeFiles

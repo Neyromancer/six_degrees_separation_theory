@@ -1,6 +1,7 @@
 /// \file user.h
 /// \brief Class which represents user.
 /// \author Kormulev Dmitry <dmitry.kormulev@yandex.ru>
+/// \version 1.0.0.0
 /// \date 08.01.2019
 
 #ifndef SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
@@ -89,8 +90,7 @@ class User {
   std::string name_;
   std::string surname_;
   uint64_t id_;
-  std::set<uint64_t> connections_{0};
-  static uint64_t count_created_users_{0};
+  std::set<uint64_t> connections_{};
 };
 }  // six_degrees_separation_theory
 
