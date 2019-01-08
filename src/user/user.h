@@ -7,6 +7,7 @@
 #define SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
 
 #include <cstdint>
+#include <set>
 #include <string>
 
 /// \namesapce six_degrees_separation_theory.
@@ -43,10 +44,21 @@ class User {
   /// \return User class object.
   User &operator=(User &&user) = default;
 
- private:
+  /// \brief Set additional connection.
+  /// \param id User's id to whom current user will be connected.
+  void SetConnection(uint64_t id);
+
+  /// \brief Return user's available direct connections.
+  /// \return User's direct connections.
+  inline std::set<uint64_t> GetConnections() const noexcept {
+    return connections_;
+  }
+
+ private
   std::string name_;
   std::string surname_;
   uint64_t id_;
+  std::set<uint64_t> connections_{0};
 };
 }  // six_degrees_separation_theory
 
