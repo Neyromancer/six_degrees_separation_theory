@@ -12,8 +12,8 @@ include_directories ("${PROJECT_BINARY_DIR}")
 include_directories ("${PROJECT_SOURCE_DIR}/user")
 add_subdirectory (user)
 
-add_executable (six_handshake_test main.cpp)
-target_link_libraries(six_handshake_test user)
+add_executable (six_handshake_test $<TARGET_OBJECTS:user> main.cpp)
+# target_link_libraries(six_handshake_test user)
 
 install (TARGETS six_handshake_test DESTINATION
 /home/dmitry/workspace/git/)

@@ -36,7 +36,9 @@
 *.swo
 *~
 *.cmake
+
 CMakeCache.txt
+Makefile
 
 # Direcotries
 **/test
