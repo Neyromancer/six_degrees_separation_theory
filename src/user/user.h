@@ -3,7 +3,7 @@
 /// \author Kormulev Dmitry <dmitry.kormulev@yandex.ru>
 /// \date 08.01.2019
 
-#ifdef SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
+#ifndef SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
 #define SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
 
 #include <cstdint>
@@ -20,8 +20,7 @@ class User {
   /// \brief User class construction.
   /// \param[in] name Name.
   /// \param[in] surname Surname.
-  /// \param[in] id ID.
-  explicit User(std::string name, std::string surname, uint64_t id);
+  explicit User(std::string name, std::string surname);
 
   /// \brief User class destructor.
   ~User() = default;
@@ -44,6 +43,38 @@ class User {
   /// \return User class object.
   User &operator=(User &&user) = default;
 
+  /// \brief Set name.
+  /// \param[in] name Name.
+  void SetName(const std::string &name);
+  void SetName(std::string &&name);
+
+  /// brief Get name.
+  /// \return Returns user's name.
+  std::string GetName() const noexcept {
+    return name_;
+  }
+
+  /// \brief Set surname.
+  /// \param[in] surname.
+  void SetSurname(const std::string &surname);
+  void SetSurname(std::string &&surname);
+
+  /// \brief Get surname.
+  /// \return Returns user's surname.
+  std::string GetSurname() const noexcept {
+    return surname_;
+  }
+
+  /// \brief Set id.
+  /// \param[in] id.
+  void SetId(uint64_t id);
+  
+  /// \brief Get id.
+  /// \return Returns user's id.
+  uint64_t GetId() const noexcept {
+    return id_;
+  }
+
   /// \brief Set additional connection.
   /// \param id User's id to whom current user will be connected.
   void SetConnection(uint64_t id);
@@ -54,11 +85,12 @@ class User {
     return connections_;
   }
 
- private
+ private:
   std::string name_;
   std::string surname_;
   uint64_t id_;
   std::set<uint64_t> connections_{0};
+  static uint64_t count_created_users_{0};
 };
 }  // six_degrees_separation_theory
 
