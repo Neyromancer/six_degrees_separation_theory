@@ -9,6 +9,7 @@
 
 #include <cstdint>
 #include <string>
+#include <list>
 
 #include "../user/user.h"
 
@@ -51,6 +52,11 @@ class Network {
   void CreateAndAddUserToNetwork(std::string &&name,
                                  std::string &&surname);
 
+  /// \brief Return user by his/her id.
+  /// \param[in] id ID.
+  /// \return Object of class User.
+  User &GetUserById(uint64_t id);
+
   /// \brief Remove user by id.
   /// \param[in] id ID.
   void RemoveUserById(uint64_t id);
@@ -83,7 +89,7 @@ class Network {
   void PrintUserBySurname(std::string &&surname) const noexcept;
 
  private:
-  std::vector<User> network_{}; 
+  std::list<User> network_{}; 
 };
 }  // namespace six_degrees_separation_theory.
 

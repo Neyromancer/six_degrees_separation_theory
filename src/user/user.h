@@ -86,6 +86,12 @@ class User {
     return connections_;
   }
 
+  /// \brief Return number of connections.
+  /// \return Number of connections.
+  inline GetNumberOfConnections() const noexcept {
+    return connections_.size();
+  }
+
  private:
   std::string name_;
   std::string surname_;
