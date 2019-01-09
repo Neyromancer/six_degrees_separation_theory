@@ -11,6 +11,7 @@ namespace six_degrees_separation_theory {
 User::User(std::string name, std::string surname) : name_(name),
            surname_(surname) {
   static uint64_t count_created_users{0};
+  /// check for type overflow
   SetId(++count_created_users);
 }
 
