@@ -43,3 +43,4 @@ Makefile
 # Direcotries
 **/test
 **/CMakeFiles
+**/bin

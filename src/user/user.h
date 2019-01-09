@@ -18,7 +18,7 @@ namespace six_degrees_separation_theory {
 /// \class User user.h. 
 class User {
  public:
-  /// \brief User class construction.
+  /// \brief User class constructor.
   /// \param[in] name Name.
   /// \param[in] surname Surname.
   explicit User(std::string name, std::string surname);
@@ -92,7 +92,7 @@ class User {
   uint64_t id_;
   std::set<uint64_t> connections_{};
 };
-}  // six_degrees_separation_theory
+}  // namespace six_degrees_separation_theory
 
 #endif // SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
 

@@ -1,11 +1,13 @@
 cmake_minimum_required (VERSION 3.10)
 project (six_degrees_separation_theory)
+set (PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/bin)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/exec)
 set (six_degrees_separation_theory_VERSION_MAJOR 1)
 set (six_degrees_separation_theory_VERSION_MINOR 0)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/six_degrees_separation_theory_config.h.in"
-  "${PROJECT_BINARY_DIR}/six_degrees_separation_theory_config.h"
+  "${PROJECT_SOURCE_DIR}/six_degrees_separation_theory_config.h"
 )
 
 include_directories ("${PROJECT_BINARY_DIR}")
