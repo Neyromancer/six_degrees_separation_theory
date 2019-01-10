@@ -82,4 +82,52 @@ void Network::PrintUserById(uint64_t id) const noexcept {
   }
 }
 
+void Network::PrintUserByName(const std::string &name) const noexcept {
+  for (const auto &u : network_) {
+    if (u.GetName() == name) {
+      std::cout << "user id: " << u.GetId() << std::endl;
+      std::cout << "user name: " << u.GetName() << std::endl;
+      std::cout << "user surname: " << u.GetSurname() << std::endl;
+      std::cout << "user connections: " << u.GetNumberOfConnections() 
+                << std::endl;     
+    }
+  }
+}
+
+void Network::PrintUserByName(std::string &&name) const noexcept {
+  for (const auto &u : network_) {
+    if (u.GetName() == name) {
+      std::cout << "user id: " << u.GetId() << std::endl;
+      std::cout << "user name: " << u.GetName() << std::endl;
+      std::cout << "user surname: " << u.GetSurname() << std::endl;
+      std::cout << "user connections: " << u.GetNumberOfConnections() 
+                << std::endl;     
+    }
+  }
+}
+
+void Network::PrintUserBySurname(const std::string &surname) const noexcept {
+  for (const auto &u : network_) {
+    if (u.GetSurname() == surname) {
+      std::cout << "user id: " << u.GetId() << std::endl;
+      std::cout << "user name: " << u.GetName() << std::endl;
+      std::cout << "user surname: " << u.GetSurname() << std::endl;
+      std::cout << "user connections: " << u.GetNumberOfConnections() 
+                << std::endl;     
+    }
+  }
+}
+
+void Network::PrintUserBySurname(std::string &&surname) const noexcept {
+  for (const auto &u : network_) {
+    if (u.GetSurname() == surname) {
+      std::cout << "user id: " << u.GetId() << std::endl;
+      std::cout << "user name: " << u.GetName() << std::endl;
+      std::cout << "user surname: " << u.GetSurname() << std::endl;
+      std::cout << "user connections: " << u.GetNumberOfConnections() 
+                << std::endl;     
+    }
+  }
+}
+
 }
