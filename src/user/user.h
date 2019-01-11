@@ -28,7 +28,7 @@ class User {
 
   /// \brief User class copy constructor.
   /// \param[in] user User class object.
-  User(const User &user) = delete;
+  User(const User &user) = default;
 
   /// \brief User class move constructor.
   /// \param[in] user User class object.
@@ -37,7 +37,7 @@ class User {
   /// \brief User class copy assignment operator.
   /// \param[in] user User class object.
   /// \return User class object.
-  User &operator=(const User &user) = delete;
+  User &operator=(const User &user) = default;
 
   /// \brief User class move assignment operator.
   /// \param[in] user User class object.
@@ -88,8 +88,8 @@ class User {
 
   /// \brief Return number of connections.
   /// \return Number of connections.
-  inline GetNumberOfConnections() const noexcept {
-    return connections_.size();
+  inline uint64_t GetNumberOfConnections() const noexcept {
+    return static_cast<uint64_t>(connections_.size());
   }
 
  private:

@@ -8,8 +8,9 @@
 #define SIX_DEGREES_SEPARATION_THEORY_NETWORK_NETWORK_H_
 
 #include <cstdint>
-#include <string>
 #include <list>
+#include <iostream>
+#include <string>
 
 #include "../user/user.h"
 
@@ -21,14 +22,14 @@ namespace six_degrees_separation_theory {
 class Network {
  public:
   /// \brief Network class constructor.
-  explicit Network();
+  explicit Network() {}
 
   /// \brief Network class destructor.
   ~Network() = default;
 
   /// \brief Network class copy constructor.
   /// \param[in] network Network class object.
-  Netwok(const Network &network) = delete;
+  Network(const Network &network) = delete;
 
   /// \brief Network class move constructor.
   /// \param[in] network Network class object.
@@ -37,12 +38,12 @@ class Network {
   /// \brief Network class copy assignment operator.
   /// \param[in] network Network class object.
   /// \return Network class object.
-  Network &operator(const Network &network) = delete;
+  Network &operator=(const Network &network) = delete;
 
   /// \brief Network class move assignment operator.
   /// \param[in] network Network class object.
   /// \return Network class object.
-  Network &operator(Network &&network) = default;
+  Network &operator=(Network &&network) = default;
 
   /// \brief Add user to the network.
   /// \param[in] name Name.
@@ -52,10 +53,14 @@ class Network {
   void CreateAndAddUserToNetwork(std::string &&name,
                                  std::string &&surname);
 
-  /// \brief Return user by his/her id.
+  /// \brief Find the user by his/her id and change his/her name and surname.
   /// \param[in] id ID.
-  /// \return Object of class User.
-  User &GetUserById(uint64_t id);
+  /// \param[in] name Name.
+  /// \param[in] surname Surname.
+  void SetUserById(uint64_t id, const std::string &name,
+                   const std::string &surname);
+  void SetUserById(uint64_t id, std::string &&name,
+                   std::string &&surname);
 
   /// \brief Remove user by id.
   /// \param[in] id ID.
@@ -72,7 +77,14 @@ class Network {
   void RemoveUserBySurname(std::string &&surname);
 
   /// \brief Print users from network.
-  void PrintWholeNetwork() const noexcept;
+  inline void PrintWholeNetwork() const noexcept {
+    for (const auto &u : network_) {
+      std::cout << "user id: " << u.GetId() << std::endl;
+      std::cout << "user name: " << u.GetName() << std::endl;
+      std::cout << "user surname: " << u.GetSurname() << std::endl;
+      std::cout << "user connections: " << u.GetNumberOfConnections() << std::endl;
+    }
+  }
 
   /// \brief Print user with passed id.
   /// \param[in] id ID.
