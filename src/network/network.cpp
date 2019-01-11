@@ -73,10 +73,13 @@ void Network::RemoveUserBySurname(const std::string &surname) {
 }
 
 void Network::RemoveUserBySurname(std::string &&surname) {
+  auto tmp = network_.front();
   for (const auto &u : network_)
     if (u.GetSurname() == surname)
-      std::cout << "Value found and ready to be removed." << std::endl;
-      //network_.remove(u);
+      tmp = u;
+      //std::cout << "Value found and ready to be removed." << std::endl;
+    std::cout << "user: " << tmp.GetSurname() << std::endl;
+    network_.remove(tmp);
 }
 
 //void Network::PrintWholeNetwork() const noexcept {

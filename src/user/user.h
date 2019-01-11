@@ -44,6 +44,23 @@ class User {
   /// \return User class object.
   User &operator=(User &&user) = default;
 
+  /// \brief User class equality operator.
+  /// \param[in] rhs User class object.
+  /// \return State of equality of two objects.
+  inline bool operator==(const User &rhs) const {
+    return ((rhs.name_ == name_) &&
+            (rhs.surname_ == surname_) &&
+            (rhs.id_ == id_) &&
+            (rhs.connections_ == connections_));
+  }
+
+  /// \brief User class inequality operator.
+  /// \param[in] rhs User class object.
+  /// \return State of equality of two objects.
+  inline bool operator!=(const User &rhs) const {
+    return !(*this == rhs);
+  }
+
   /// \brief Set name.
   /// \param[in] name Name.
   void SetName(const std::string &name);
