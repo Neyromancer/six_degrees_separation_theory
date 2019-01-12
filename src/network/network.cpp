@@ -35,7 +35,7 @@ void Network::SetUserById(uint64_t id, const uint64_t connection_id = 0,
         u.SetSurname(surname);
       if (connection_id)
         u.SetConnection(connection_id);
-    } // else throw that user not found.
+    } // else throw if user not found.
   } 
 }
 
@@ -143,20 +143,42 @@ void Network::PrintUserBySurname(std::string &&surname) const noexcept{
 void Network::AddConnection(const uint64_t id1, const uint64_t id2) {
   auto is_u1_fnd = false;
   auto is_u2_fnd = false;
-  auto u1 = network_.front();
-  auto u2 = network_.front();
-  for (auto &u : network_) {
-    if (u.GetId() == id1)
+  for (const auto &u : network_) {
+    if (!is_u1_fnd && u.GetId() == id1)
       is_u1_fnd = true;
 
-    if (u.GetId() == id2)
+    if (!is_u2_fnd && u.GetId() == id2)
       is_u2_fnd = true;
-
-    if (is_u1_fnd && is_u2_fnd) {
-      SetUserById(id1, id2);
-      SetUserById(id2, id1);
-    }
   }
+
+  if (is_u1_fnd && is_u2_fnd) {
+    SetUserById(id1, id2);
+    SetUserById(id2, id1);
+  }
+}
+
+void Network::RemoveConnection(const uint64_t id1, const uint64_t id2) {
+  auto is_u1_fnd = false;
+  auto is_u2_fnd = false;
+  for (const auto &u : network_) {
+    if (!is_u1_fnd && u.GetId() == id1)
+      is_u1_fnd = true;
+
+    if (!is_u2_fnd && u.GetId() == id2)
+      is_u2_fnd = true;
+  }
+
+  if (is_u1_fnd && is_u2_fnd) {
+    RemoveConnectionById(id1, id2);
+    RemoveConnectionById(id2, id1);
+  }
+}
+
+void Network::RemoveConnectionById(const uint64_t id, 
+                                   const uint64_t connection_id) {
+  for (auto &u : network_)
+    if (u.GetId() == id)
+      u.RemoveConnection(connection_id);
 }
 
 }

@@ -38,9 +38,14 @@ int main(void) {
   //std::cout << "remove user by surname: " << std::endl;
   //network.RemoveUserBySurname("Peterson");
   std::cout << "===================================" << std::endl;
+  std::cout << "After adding connections: " << std::endl;
   network.AddConnection(1, 3);
   network.PrintWholeNetwork();
-  
+  std::cout << "===================================" << std::endl;
+  std::cout << "After removing connections: " << std::endl;
+  network.RemoveConnection(1, 3);
+  network.PrintWholeNetwork();
+  std::cout << "===================================" << std::endl;
 
   return EXIT_SUCCESS;
 }

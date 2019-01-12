@@ -31,11 +31,18 @@ void User::SetSurname(std::string &&surname) {
   surname_ = surname;
 }
 
-void User::SetId(uint64_t id) {
+void User::SetId(const uint64_t id) {
   id_ = id;
 }
 
-void User::SetConnection(uint64_t id) {
+void User::SetConnection(const uint64_t id) {
   connections_.insert(id);
 }
+
+void User::RemoveConnection(const uint64_t id) {
+  //if (connections_.empty())
+  //  throw(); throw something here.
+  connections_.erase(id);
+}
+
 }  // six_degree_separation_theory

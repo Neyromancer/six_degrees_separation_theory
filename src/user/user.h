@@ -85,7 +85,7 @@ class User {
 
   /// \brief Set id.
   /// \param[in] id.
-  void SetId(uint64_t id);
+  void SetId(const uint64_t id);
   
   /// \brief Get id.
   /// \return Returns user's id.
@@ -95,13 +95,17 @@ class User {
 
   /// \brief Set additional connection.
   /// \param id User's id to whom current user will be connected.
-  void SetConnection(uint64_t id);
+  void SetConnection(const uint64_t id);
 
   /// \brief Return user's available direct connections.
   /// \return User's direct connections.
   inline std::set<uint64_t> GetConnections() const noexcept {
     return connections_;
   }
+
+  /// \brief Remove passed connection.
+  /// \param[in] id ID.
+  void RemoveConnection(const uint64_t id);
 
   /// \brief Return number of connections.
   /// \return Number of connections.

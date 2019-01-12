@@ -55,6 +55,7 @@ class Network {
 
   /// \brief Find the user by his/her id and change his/her name and surname.
   /// \param[in] id ID.
+  /// \param[in] connection_id ID.
   /// \param[in] name Name.
   /// \param[in] surname Surname.
   void SetUserById(const uint64_t id, const uint64_t connection_id,
@@ -106,9 +107,13 @@ class Network {
   /// \brief Remove direct connection between 2 users represented by their ids.
   /// \param[in] id1 1st user id.
   /// \param[in] id2 2nd user id.
-  //void RemoveConnection(const uint64_t id1, const uint64_t id2);
+  void RemoveConnection(const uint64_t id1, const uint64_t id2);
 
  private:
+  /// \brief Remove direct connnection from user set by his/her id.
+  /// \param[in] id ID.
+  /// \param[in] connection_id ID.
+  void RemoveConnectionById(const uint64_t id, const uint64_t connection_id);
   std::list<User> network_{}; 
 };
 }  // namespace six_degrees_separation_theory.
