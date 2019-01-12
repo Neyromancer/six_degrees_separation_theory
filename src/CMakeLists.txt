@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 3.10)
 project (six_degrees_separation_theory)
-set (PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/bin)
-set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/exec)
+set (CMAKE_CXX_STANDARD 14)
 set (six_degrees_separation_theory_VERSION_MAJOR 1)
 set (six_degrees_separation_theory_VERSION_MINOR 0)
 
@@ -12,10 +11,12 @@ configure_file (
 
 include_directories ("${PROJECT_BINARY_DIR}")
 include_directories ("${PROJECT_SOURCE_DIR}/user")
+include_directories ("${PROJECT_SOURCE_DIR}/network")
 add_subdirectory (user)
+add_subdirectory(network)
 
-add_executable (six_handshake_test $<TARGET_OBJECTS:user> main.cpp)
-# target_link_libraries(six_handshake_test user)
+add_executable (six_handshake_test main.cpp)
+target_link_libraries(six_handshake_test network)
 
 install (TARGETS six_handshake_test DESTINATION
 /home/dmitry/workspace/git/)

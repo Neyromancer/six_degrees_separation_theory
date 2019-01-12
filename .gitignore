@@ -39,6 +39,10 @@
 
 CMakeCache.txt
 Makefile
+<<<<<<< HEAD
+=======
+six_degrees_separation_theory_config.h
+>>>>>>> 51931b77120193378edfa876df631972d59458f7
 
 # Direcotries
 **/test

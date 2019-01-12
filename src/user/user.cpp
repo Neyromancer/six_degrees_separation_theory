@@ -8,9 +8,12 @@
 
 namespace six_degrees_separation_theory {
 
+User::User() : name_{}, surname_{} {}
+
 User::User(std::string name, std::string surname) : name_(name),
            surname_(surname) {
   static uint64_t count_created_users{0};
+  /// check for type overflow
   SetId(++count_created_users);
 }
 
@@ -30,11 +33,18 @@ void User::SetSurname(std::string &&surname) {
   surname_ = surname;
 }
 
-void User::SetId(uint64_t id) {
+void User::SetId(const uint64_t id) {
   id_ = id;
 }
 
-void User::SetConnection(uint64_t id) {
+void User::SetConnection(const uint64_t id) {
   connections_.insert(id);
 }
+
+void User::RemoveConnection(const uint64_t id) {
+  //if (connections_.empty())
+  //  throw(); throw something here.
+  connections_.erase(id);
+}
+
 }  // six_degree_separation_theory

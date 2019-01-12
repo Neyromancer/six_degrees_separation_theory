@@ -1,6 +1,2 @@
-add_library(user OBJECT user.cpp)
-
-install (TARGETS user DESTINATION
-/home/dmitry/workspace/git/six_degrees_separation_theory/test)
-install (FILES user.h DESTINATION
-/home/dmitry/workspace/git/six_degrees_separation_theory/test)
+add_library(user user.cpp)
+target_include_directories(user PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
