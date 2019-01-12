@@ -34,11 +34,13 @@ int main(void) {
   //network.PrintUserById(0);
   //std::cout << "1:" << std::endl; 
   //network.PrintUserById(1);
+  //std::cout << "===================================" << std::endl;
+  //std::cout << "remove user by surname: " << std::endl;
+  //network.RemoveUserBySurname("Peterson");
   std::cout << "===================================" << std::endl;
-  std::cout << "remove user by surname: " << std::endl;
-  network.RemoveUserBySurname("Peterson");
-  std::cout << "===================================" << std::endl;
+  network.AddConnection(1, 2);
   network.PrintWholeNetwork();
+  
 
   return EXIT_SUCCESS;
 }

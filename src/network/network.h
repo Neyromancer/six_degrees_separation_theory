@@ -100,6 +100,16 @@ class Network {
   void PrintUserBySurname(const std::string &surname) const noexcept;
   void PrintUserBySurname(std::string &&surname) const noexcept;
 
+  /// \brief Add direct connection between 2 users represented by their ids.
+  /// \param[in] id1 1st user id.
+  /// \param[in] id2 2nd user id.
+  void AddConnection(const uint64_t id1, const uint64_t id2);
+
+  /// \brief Remove direct connection between 2 users represented by their ids.
+  /// \param[in] id1 1st user id.
+  /// \param[in] id2 2nd user id.
+  //void RemoveConnection(const uint64_t id1, const uint64_t id2);
+
  private:
   std::list<User> network_{}; 
 };
