@@ -28,7 +28,7 @@ class User {
 
   /// \brief User class copy constructor.
   /// \param[in] user User class object.
-  User(const User &user) = delete;
+  User(const User &user) = default;
 
   /// \brief User class move constructor.
   /// \param[in] user User class object.
@@ -37,12 +37,29 @@ class User {
   /// \brief User class copy assignment operator.
   /// \param[in] user User class object.
   /// \return User class object.
-  User &operator=(const User &user) = delete;
+  User &operator=(const User &user) = default;
 
   /// \brief User class move assignment operator.
   /// \param[in] user User class object.
   /// \return User class object.
   User &operator=(User &&user) = default;
+
+  /// \brief User class equality operator.
+  /// \param[in] rhs User class object.
+  /// \return State of equality of two objects.
+  inline bool operator==(const User &rhs) const {
+    return ((rhs.name_ == name_) &&
+            (rhs.surname_ == surname_) &&
+            (rhs.id_ == id_) &&
+            (rhs.connections_ == connections_));
+  }
+
+  /// \brief User class inequality operator.
+  /// \param[in] rhs User class object.
+  /// \return State of equality of two objects.
+  inline bool operator!=(const User &rhs) const {
+    return !(*this == rhs);
+  }
 
   /// \brief Set name.
   /// \param[in] name Name.
@@ -68,7 +85,7 @@ class User {
 
   /// \brief Set id.
   /// \param[in] id.
-  void SetId(uint64_t id);
+  void SetId(const uint64_t id);
   
   /// \brief Get id.
   /// \return Returns user's id.
@@ -78,7 +95,7 @@ class User {
 
   /// \brief Set additional connection.
   /// \param id User's id to whom current user will be connected.
-  void SetConnection(uint64_t id);
+  void SetConnection(const uint64_t id);
 
   /// \brief Return user's available direct connections.
   /// \return User's direct connections.
@@ -86,10 +103,20 @@ class User {
     return connections_;
   }
 
+  /// \brief Remove passed connection.
+  /// \param[in] id ID.
+  void RemoveConnection(const uint64_t id);
+
+  /// \brief Return number of connections.
+  /// \return Number of connections.
+  inline uint64_t GetNumberOfConnections() const noexcept {
+    return static_cast<uint64_t>(connections_.size());
+  }
+
  private:
   std::string name_;
   std::string surname_;
-  uint64_t id_;
+  uint64_t id_{0};
   std::set<uint64_t> connections_{};
 };
 }  // six_degrees_separation_theory
