@@ -24,7 +24,7 @@ void Network::CreateAndAddUserToNetwork(std::string &&name,
   network_.push_back(user);
 }
 
-void Network::SetUserById(uint64_t id, const uint64_t connection_id = 0, 
+void Network::SetUserById(const uint64_t id, const uint64_t connection_id = 0, 
                           const std::string &name = {}, 
                           const std::string &surname = {}) {
   for (auto &u : network_) {
@@ -39,7 +39,7 @@ void Network::SetUserById(uint64_t id, const uint64_t connection_id = 0,
   } 
 }
 
-void Network::RemoveUserById(uint64_t id) {
+void Network::RemoveUserById(const uint64_t id) {
   auto tmp = network_.front();
   for (const auto &u : network_)
     if (u.GetId() == id)
@@ -80,7 +80,7 @@ void Network::RemoveUserBySurname(std::string &&surname) {
     network_.remove(tmp);
 }
 
-void Network::PrintUserById(uint64_t id) const noexcept {
+void Network::PrintUserById(const uint64_t id) const noexcept {
   for (const auto &u : network_) {
     if (u.GetId() == id) {
       std::cout << "user id: " << u.GetId() << std::endl;

@@ -116,7 +116,7 @@ class User {
  private:
   std::string name_;
   std::string surname_;
-  uint64_t id_;
+  uint64_t id_{0};
   std::set<uint64_t> connections_{};
 };
 }  // six_degrees_separation_theory

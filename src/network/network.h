@@ -63,7 +63,7 @@ class Network {
 
   /// \brief Remove user by id.
   /// \param[in] id ID.
-  void RemoveUserById(uint64_t id);
+  void RemoveUserById(const uint64_t id);
 
   /// \brief Remove all users with passed name.
   /// \param[in] name Name.
@@ -87,7 +87,7 @@ class Network {
 
   /// \brief Print user with passed id.
   /// \param[in] id ID.
-  void PrintUserById(uint64_t id) const noexcept;
+  void PrintUserById(const uint64_t id) const noexcept;
 
   /// \brief Print all users with passed name.
   /// \param[in] name Name.
