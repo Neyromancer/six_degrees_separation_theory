@@ -61,6 +61,23 @@ class Network {
   void SetUserById(const uint64_t id, const uint64_t connection_id,
                    const std::string &name, const std::string &surname);
 
+  /// \brief Get user by his/her id.
+  /// \param[in] id ID.
+  /// \return Object of class User.
+  User GetUserById(const uint64_t id) const noexcept;
+
+  /// \brief Check if id exist.
+  /// \param[in] id.
+  /// \return Result of checking id existence.
+  bool IsIdExist(const uint64_t id) const noexcept;
+
+  /// \brief Check if user exist.
+  /// \param[in] name Name.
+  /// \param[in] surname Surname.
+  /// \return Result of checking user existence.
+  bool IsUserExist(const std::string &name, const std::string &surname) const noexcept;
+  bool IsUserExist(std::string &&name, std::string &&surname) const noexcept;
+
   /// \brief Remove user by id.
   /// \param[in] id ID.
   void RemoveUserById(const uint64_t id);
@@ -95,9 +112,14 @@ class Network {
   void PrintUserByName(std::string &&name) const noexcept;
 
   /// \brief Print all users with passed surname.
-  /// \brief[in] surname Surname.
+  /// \param[in] surname Surname.
   void PrintUserBySurname(const std::string &surname) const noexcept;
   void PrintUserBySurname(std::string &&surname) const noexcept;
+
+  /// \brief Print user's connection at a particular depth.
+  /// \param[in] id ID.
+  /// \param[in] depth Network connection depth.
+  void PrintConnectionsAtDepth(const uint64_t id, const uint64_t depth)const noexcept;
 
   /// \brief Add direct connection between 2 users represented by their ids.
   /// \param[in] id1 1st user id.

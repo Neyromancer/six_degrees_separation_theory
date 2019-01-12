@@ -19,6 +19,9 @@ namespace six_degrees_separation_theory {
 class User {
  public:
   /// \brief User class construction.
+  User();
+
+  /// \brief User class construction.
   /// \param[in] name Name.
   /// \param[in] surname Surname.
   explicit User(std::string name, std::string surname);

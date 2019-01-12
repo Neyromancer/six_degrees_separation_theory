@@ -39,6 +39,66 @@ void Network::SetUserById(const uint64_t id, const uint64_t connection_id = 0,
   } 
 }
 
+User Network::GetUserById(const uint64_t id) const noexcept {
+  User user;
+  for (const auto &u : network_)
+    if (u.GetId() == id)
+      user = u;
+  return user; 
+}
+
+bool Network::IsIdExist(const uint64_t id) const noexcept {
+  auto is_exist = false;
+  for (const auto &u : network_)
+    if (u.GetId() == id)
+      is_exist = true;
+  return is_exist;
+}
+
+bool Network::IsUserExist(const std::string &name, 
+                          const std::string &surname) const noexcept {
+  auto is_exist = false;
+  auto is_name = false;
+  auto is_surname = false;
+  for (const auto &u : network_) {
+    if (u.GetName() == name)
+      is_name = true;
+    else
+      is_surname = false;
+
+    if (u.GetSurname() == surname)
+      is_surname = true;
+    else
+      is_name = false;
+
+    if (is_surname && is_name)
+      is_exist = true;
+  }
+  return is_exist;
+}
+
+bool Network::IsUserExist(std::string &&name, 
+                          std::string &&surname) const noexcept {
+  auto is_exist = false;
+  auto is_name = false;
+  auto is_surname = false;
+  for (const auto &u : network_) {
+    if (u.GetName() == name)
+      is_name = true;
+    else
+      is_surname = false;
+
+    if (u.GetSurname() == surname)
+      is_surname = true;
+    else
+      is_name = false;
+
+    if (is_surname && is_name)
+      is_exist = true;
+  }
+  return is_exist;
+}
+
 void Network::RemoveUserById(const uint64_t id) {
   auto tmp = network_.front();
   for (const auto &u : network_)
@@ -140,6 +200,26 @@ void Network::PrintUserBySurname(std::string &&surname) const noexcept{
   }
 }
 
+void Network::PrintConnectionsAtDepth(const uint64_t id, 
+                                      const uint64_t depth) const noexcept {
+  if (IsIdExist(id)) { 
+    auto d = depth;
+    User user = GetUserById(id);
+    if (!user.GetNumberOfConnections())
+      return;
+
+    if (d > 0) {
+      for (const auto &tmp_id : user.GetConnections())
+        PrintConnectionsAtDepth(tmp_id, d - 1);
+    } else
+      return;
+
+    for (const auto &tmp_id : user.GetConnections()) {
+      PrintUserById(tmp_id);
+      std::cout << "======================" << std::endl;
+    }
+  }
+}
 void Network::AddConnection(const uint64_t id1, const uint64_t id2) {
   auto is_u1_fnd = false;
   auto is_u2_fnd = false;
