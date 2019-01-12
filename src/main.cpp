@@ -42,10 +42,11 @@ int main(void) {
   network.AddConnection(1, 3);
   network.PrintWholeNetwork();
   std::cout << "===================================" << std::endl;
-  std::cout << "After removing connections: " << std::endl;
-  network.RemoveConnection(1, 3);
-  network.PrintWholeNetwork();
-  std::cout << "===================================" << std::endl;
+  network.PrintConnectionsAtDepth(1, 3);
+  //std::cout << "After removing connections: " << std::endl;
+  //network.RemoveConnection(1, 3);
+  //network.PrintWholeNetwork();
+  //std::cout << "===================================" << std::endl;
 
   return EXIT_SUCCESS;
 }
