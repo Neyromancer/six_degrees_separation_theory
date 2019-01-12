@@ -1,7 +1,7 @@
 /// \file user.h
 /// \brief Class which represents user.
 /// \author Kormulev Dmitry <dmitry.kormulev@yandex.ru>
-/// \version 1.0.0.0
+/// \version 1.0.0.1
 /// \date 08.01.2019
 
 #ifndef SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
@@ -18,10 +18,10 @@ namespace six_degrees_separation_theory {
 /// \class User user.h. 
 class User {
  public:
-  /// \brief User class construction.
+  /// \brief User class constructor.
   User();
 
-  /// \brief User class construction.
+  /// \brief User class constructor.
   /// \param[in] name Name.
   /// \param[in] surname Surname.
   explicit User(std::string name, std::string surname);
@@ -122,7 +122,7 @@ class User {
   uint64_t id_{0};
   std::set<uint64_t> connections_{};
 };
-}  // six_degrees_separation_theory
+}  // namespace six_degrees_separation_theory
 
 #endif // SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
 

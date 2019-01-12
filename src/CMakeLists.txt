@@ -6,7 +6,7 @@ set (six_degrees_separation_theory_VERSION_MINOR 0)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/six_degrees_separation_theory_config.h.in"
-  "${PROJECT_BINARY_DIR}/six_degrees_separation_theory_config.h"
+  "${PROJECT_SOURCE_DIR}/six_degrees_separation_theory_config.h"
 )
 
 include_directories ("${PROJECT_BINARY_DIR}")
