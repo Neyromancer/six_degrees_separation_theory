@@ -24,22 +24,17 @@ void Network::CreateAndAddUserToNetwork(std::string &&name,
   network_.push_back(user);
 }
 
-void Network::SetUserById(uint64_t id, const std::string &name, 
-                          const std::string &surname) {
+void Network::SetUserById(uint64_t id, const uint64_t connection_id = 0, 
+                          const std::string &name = {}, 
+                          const std::string &surname = {}) {
   for (auto &u : network_) {
     if (u.GetId() == id) {
-      u.SetName(name);
-      u.SetSurname(surname);
-    } // else throw that user not found.
-  } 
-}
-
-void Network::SetUserById(uint64_t id, std::string &&name, 
-                          std::string &&surname) {
-  for (auto &u : network_) {
-    if (u.GetId() == id) {
-      u.SetName(name);
-      u.SetSurname(surname);
+      if (!name.empty())
+        u.SetName(name);
+      if (!surname.empty())
+        u.SetSurname(surname);
+      if (connection_id)
+        u.SetConnection(connection_id);
     } // else throw that user not found.
   } 
 }
@@ -151,18 +146,15 @@ void Network::AddConnection(const uint64_t id1, const uint64_t id2) {
   auto u1 = network_.front();
   auto u2 = network_.front();
   for (auto &u : network_) {
-    if (u.GetId() == id1) {
-      *u1 = &u;
+    if (u.GetId() == id1)
       is_u1_fnd = true;
-    }
 
-    if (u.GetId() == id2) {
-      *u2 = &u;
+    if (u.GetId() == id2)
       is_u2_fnd = true;
-    }
+
     if (is_u1_fnd && is_u2_fnd) {
-      u1.SetConnection(id2);
-      u2.SetConnection(id1);
+      SetUserById(id1, id2);
+      SetUserById(id2, id1);
     }
   }
 }

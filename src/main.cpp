@@ -38,7 +38,7 @@ int main(void) {
   //std::cout << "remove user by surname: " << std::endl;
   //network.RemoveUserBySurname("Peterson");
   std::cout << "===================================" << std::endl;
-  network.AddConnection(1, 2);
+  network.AddConnection(1, 3);
   network.PrintWholeNetwork();
   
 

@@ -57,10 +57,8 @@ class Network {
   /// \param[in] id ID.
   /// \param[in] name Name.
   /// \param[in] surname Surname.
-  void SetUserById(uint64_t id, const std::string &name,
-                   const std::string &surname);
-  void SetUserById(uint64_t id, std::string &&name,
-                   std::string &&surname);
+  void SetUserById(const uint64_t id, const uint64_t connection_id,
+                   const std::string &name, const std::string &surname);
 
   /// \brief Remove user by id.
   /// \param[in] id ID.
