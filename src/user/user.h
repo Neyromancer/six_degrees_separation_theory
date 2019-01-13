@@ -8,6 +8,7 @@
 #define SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
 
 #include <cstdint>
+#include <ostream>
 #include <set>
 #include <string>
 
@@ -63,6 +64,12 @@ class User {
   inline bool operator!=(const User &rhs) const {
     return !(*this == rhs);
   }
+
+  /// \brief User class output operator.
+  /// \param[in] out Output.
+  /// \param[in] user User datum.
+  /// \return Standrat output.
+  friend std::ostream &operator<<(std::ostream &out, const User &user);
 
   /// \brief Set name.
   /// \param[in] name Name.
