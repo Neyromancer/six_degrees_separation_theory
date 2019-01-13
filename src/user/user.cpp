@@ -17,6 +17,13 @@ User::User(std::string name, std::string surname) : name_(name),
   SetId(++count_created_users);
 }
 
+std::ostream &operator<<(std::ostream &out, const User &user) {
+  return out << "user id: " << user.id_ << std::endl
+             << "user name: " << user.name_ << std::endl
+             << "user surname: " << user.surname_ << std::endl
+             << "user connections: " << user.GetNumberOfConnections();
+}
+
 void  User::SetName(const std::string &name) {
   name_ = name;
 }

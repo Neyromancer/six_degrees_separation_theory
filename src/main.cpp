@@ -37,12 +37,12 @@ int main(void) {
   //std::cout << "===================================" << std::endl;
   //std::cout << "remove user by surname: " << std::endl;
   //network.RemoveUserBySurname("Peterson");
-  std::cout << "===================================" << std::endl;
-  std::cout << "After adding connections: " << std::endl;
-  network.AddConnection(1, 3);
-  network.PrintWholeNetwork();
-  std::cout << "===================================" << std::endl;
-  network.PrintConnectionsAtDepth(1, 3);
+  //std::cout << "===================================" << std::endl;
+  //std::cout << "After adding connections: " << std::endl;
+  //network.AddConnection(1, 3);
+  //network.PrintWholeNetwork();
+  //std::cout << "===================================" << std::endl;
+  //network.PrintConnectionsAtDepth(1, 3);
   //std::cout << "After removing connections: " << std::endl;
   //network.RemoveConnection(1, 3);
   //network.PrintWholeNetwork();
