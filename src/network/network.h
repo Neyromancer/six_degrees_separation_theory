@@ -132,6 +132,12 @@ class Network {
   /// \param[in] id2 2nd user id.
   void RemoveConnection(const uint64_t id1, const uint64_t id2);
 
+  /// \brief Check user mutual connection.
+  /// \param[in] id1 ID.
+  /// \param[in] id2 ID.
+  /// \return Result of the check.
+  bool CheckUserInterconnection(const uint64_t id1, const uint64_t id2) const noexcept;
+
  private:
   /// \brief Remove direct connnection from user set by his/her id.
   /// \param[in] id ID.
