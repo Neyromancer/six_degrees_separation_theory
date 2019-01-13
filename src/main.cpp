@@ -35,7 +35,9 @@ int main(void) {
   //std::cout << "After removing connections: " << std::endl;
   //network.RemoveConnection(1, 3);
   //network.PrintWholeNetwork();
-  network.CheckUserInterconnection(1, 6);
+  std::cout << "are users 1 and 6 connected: ";
+  if (network.AreUsersConnected(1, 6))
+    std::cout << "true" << std::endl;
   std::cout << "===================================" << std::endl;
 
   return EXIT_SUCCESS;
