@@ -141,63 +141,33 @@ void Network::RemoveUserBySurname(std::string &&surname) {
 }
 
 void Network::PrintUserById(const uint64_t id) const noexcept {
-  for (const auto &u : network_) {
-    if (u.GetId() == id) {
-      std::cout << "user id: " << u.GetId() << std::endl;
-      std::cout << "user name: " << u.GetName() << std::endl;
-      std::cout << "user surname: " << u.GetSurname() << std::endl;
-      std::cout << "user connections: " << u.GetNumberOfConnections() 
-                << std::endl;
-    }
-  }
+  for (const auto &u : network_)
+    if (u.GetId() == id)
+      std::cout << u;
 }
 
 void Network::PrintUserByName(const std::string &name) const noexcept {
-  for (const auto &u : network_) {
-    if (u.GetName() == name) {
-      std::cout << "user id: " << u.GetId() << std::endl;
-      std::cout << "user name: " << u.GetName() << std::endl;
-      std::cout << "user surname: " << u.GetSurname() << std::endl;
-      std::cout << "user connections: " << u.GetNumberOfConnections() 
-                << std::endl;     
-    }
-  }
+  for (const auto &u : network_)
+    if (u.GetName() == name)
+      std::cout << u;
 }
 
 void Network::PrintUserByName(std::string &&name) const noexcept {
-  for (const auto &u : network_) {
-    if (u.GetName() == name) {
-      std::cout << "user id: " << u.GetId() << std::endl;
-      std::cout << "user name: " << u.GetName() << std::endl;
-      std::cout << "user surname: " << u.GetSurname() << std::endl;
-      std::cout << "user connections: " << u.GetNumberOfConnections() 
-                << std::endl;     
-    }
-  }
+  for (const auto &u : network_)
+    if (u.GetName() == name)
+      std::cout << u;
 }
 
 void Network::PrintUserBySurname(const std::string &surname) const noexcept { 
-  for (const auto &u : network_) {
-    if (u.GetSurname() == surname) {
-      std::cout << "user id: " << u.GetId() << std::endl;
-      std::cout << "user name: " << u.GetName() << std::endl;
-      std::cout << "user surname: " << u.GetSurname() << std::endl;
-      std::cout << "user connections: " << u.GetNumberOfConnections() 
-                << std::endl;     
-    }
-  }
+  for (const auto &u : network_)
+    if (u.GetSurname() == surname)
+      std::cout << u;
 }
 
 void Network::PrintUserBySurname(std::string &&surname) const noexcept{
-  for (const auto &u : network_) {
-    if (u.GetSurname() == surname) {
-      std::cout << "user id: " << u.GetId() << std::endl;
-      std::cout << "user name: " << u.GetName() << std::endl;
-      std::cout << "user surname: " << u.GetSurname() << std::endl;
-      std::cout << "user connections: " << u.GetNumberOfConnections() 
-                << std::endl;     
-    }
-  }
+  for (const auto &u : network_)
+    if (u.GetSurname() == surname)
+      std::cout << u;
 }
 
 void Network::PrintConnectionsAtDepth(const uint64_t id, 
