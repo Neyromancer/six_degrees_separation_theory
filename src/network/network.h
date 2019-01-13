@@ -118,6 +118,10 @@ class Network {
   /// \param[in] depth Network connection depth.
   void PrintConnectionsAtDepth(const uint64_t id, const uint64_t depth);
 
+  /// \brief Print all user's connections.
+  /// \param[in] id ID.
+  void PrintAllUserConnections(const uint64_t id);
+
   /// \brief Add direct connection between 2 users represented by their ids.
   /// \param[in] id1 1st user id.
   /// \param[in] id2 2nd user id.

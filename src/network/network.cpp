@@ -190,6 +190,34 @@ void Network::PrintConnectionsAtDepth(const uint64_t id, const uint64_t depth) {
       return;
     }
   }
+
+  if (!used_id_.empty())
+    used_id_.clear();
+}
+
+void Network::PrintAllUserConnections(const uint64_t id) {
+  static uint64_t connection_depth_level = 1;
+  RecallId(id);
+  User user = GetUserById(id);
+  if (user.GetNumberOfConnections() > 1) {
+    for (const auto &tmp_id : user.GetConnections()) {
+      if (!IsIdUsed(tmp_id)) {
+        PrintUserById(tmp_id);
+        std::cout << "\nconnection level is " << connection_depth_level 
+                  << std::endl;
+      }
+    }
+
+    ++connection_depth_level;
+    for (const auto &tmp_id : user.GetConnections())
+      if (!IsIdUsed(tmp_id))
+        PrintAllUserConnections(tmp_id);
+
+    if (!used_id_.empty())
+      used_id_.clear();
+  } else {
+    return;
+  }
 }
 
 void Network::AddConnection(const uint64_t id1, const uint64_t id2) {

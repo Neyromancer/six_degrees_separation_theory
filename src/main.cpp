@@ -30,7 +30,8 @@ int main(void) {
   network.AddConnection(3, 6);
   network.PrintWholeNetwork();
   std::cout << "===================================" << std::endl;
-  network.PrintConnectionsAtDepth(1, 3);
+  //network.PrintConnectionsAtDepth(1, 3);
+  network.PrintAllUserConnections(1);
   //std::cout << "After removing connections: " << std::endl;
   //network.RemoveConnection(1, 3);
   //network.PrintWholeNetwork();
