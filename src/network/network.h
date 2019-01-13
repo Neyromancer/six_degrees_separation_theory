@@ -136,7 +136,7 @@ class Network {
   /// \param[in] id1 ID.
   /// \param[in] id2 ID.
   /// \return Result of the check.
-  bool CheckUserInterconnection(const uint64_t id1, const uint64_t id2) const noexcept;
+  bool AreUsersConnected(const uint64_t id1, const uint64_t id2);
 
  private:
   /// \brief Remove direct connnection from user set by his/her id.

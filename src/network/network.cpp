@@ -263,6 +263,17 @@ void Network::RemoveConnectionById(const uint64_t id,
       u.RemoveConnection(connection_id);
 }
 
+bool Network::AreUsersConnected(const uint64_t id1, const uint64_t id2) {
+  User user = GetUserById(id);
+  if (user.GetNumberOfConnections() > 1) {
+    for (const auto &tmp_id : user.GetConnections())
+      if (id2 == tmp_id)
+        return true;
+  }
+
+  return false;
+}
+
 void Network::RecallId(const uint64_t id) {
   used_id_.insert(id);
 }

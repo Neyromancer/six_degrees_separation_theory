@@ -31,10 +31,11 @@ int main(void) {
   network.PrintWholeNetwork();
   std::cout << "===================================" << std::endl;
   //network.PrintConnectionsAtDepth(1, 3);
-  network.PrintAllUserConnections(1);
+  //network.PrintAllUserConnections(1);
   //std::cout << "After removing connections: " << std::endl;
   //network.RemoveConnection(1, 3);
   //network.PrintWholeNetwork();
+  network.CheckUserInterconnection(1, 6);
   std::cout << "===================================" << std::endl;
 
   return EXIT_SUCCESS;
