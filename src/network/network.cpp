@@ -170,8 +170,8 @@ void Network::PrintUserBySurname(std::string &&surname) const noexcept{
       std::cout << u;
 }
 
-void Network::PrintConnectionsAtDepth(const uint64_t id, 
-                                      const uint64_t depth) const noexcept {
+void Network::PrintConnectionsAtDepth(const uint64_t id, const uint64_t depth) {
+  RecallId(id);
   if (IsIdExist(id)) { 
     auto d = depth;
     User user = GetUserById(id);
@@ -180,17 +180,21 @@ void Network::PrintConnectionsAtDepth(const uint64_t id,
 
     if (d > 0) {
       for (const auto &tmp_id : user.GetConnections())
-        PrintConnectionsAtDepth(tmp_id, d - 1);
-    } else
+        if (!IsIdUsed(tmp_id))
+          PrintConnectionsAtDepth(tmp_id, d - 1);
+    } else {
+      for (const auto &tmp_id : user.GetConnections()) {
+          PrintUserById(tmp_id);
+          std::cout << "\n======================" << std::endl;
+      }
       return;
-
-    for (const auto &tmp_id : user.GetConnections()) {
-      PrintUserById(tmp_id);
-      std::cout << "======================" << std::endl;
     }
   }
 }
+
 void Network::AddConnection(const uint64_t id1, const uint64_t id2) {
+  //if (id1 == id2)
+  //  throw error here
   auto is_u1_fnd = false;
   auto is_u2_fnd = false;
   for (const auto &u : network_) {
@@ -229,6 +233,14 @@ void Network::RemoveConnectionById(const uint64_t id,
   for (auto &u : network_)
     if (u.GetId() == id)
       u.RemoveConnection(connection_id);
+}
+
+void Network::RecallId(const uint64_t id) {
+  used_id_.insert(id);
+}
+
+bool Network::IsIdUsed(const uint64_t id) const noexcept {
+  return (!used_id_.empty() && used_id_.find(id) != used_id_.end());
 }
 
 }

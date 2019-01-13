@@ -10,6 +10,7 @@
 #include <cstdint>
 #include <list>
 #include <iostream>
+#include <set>
 #include <string>
 
 #include "../user/user.h"
@@ -115,7 +116,7 @@ class Network {
   /// \brief Print user's connection at a particular depth.
   /// \param[in] id ID.
   /// \param[in] depth Network connection depth.
-  void PrintConnectionsAtDepth(const uint64_t id, const uint64_t depth)const noexcept;
+  void PrintConnectionsAtDepth(const uint64_t id, const uint64_t depth);
 
   /// \brief Add direct connection between 2 users represented by their ids.
   /// \param[in] id1 1st user id.
@@ -132,7 +133,18 @@ class Network {
   /// \param[in] id ID.
   /// \param[in] connection_id ID.
   void RemoveConnectionById(const uint64_t id, const uint64_t connection_id);
-  std::list<User> network_{}; 
+
+  /// \brief Recall used id.
+  /// \param[in] id ID.
+  void RecallId(const uint64_t id);
+
+  /// \brief Check if id have been used.
+  /// \param[in] id ID.
+  /// \return Resutl of the check if ID used.
+  bool IsIdUsed(const uint64_t id) const noexcept;
+
+  std::list<User> network_{};
+  std::set<uint64_t> used_id_{};
 };
 }  // namespace six_degrees_separation_theory.
 
