@@ -66,9 +66,15 @@ class User {
 
   /// \brief Set name.
   /// \param[in] name Name.
-  void SetName(const std::string &name);
-  void SetName(std::string &&name);
+  // void SetName(const std::string &name);
+  // void SetName(std::string &&name);
 
+  /// \brief Set name and surname.
+  /// \param[in] name Name.
+  /// \param[in] surname Surname.
+  void SetNameAndSurname(const std::string &name,
+                         const std::string &surname);
+  void SetNameAndSurname(std::string &&name, std::string &&surname);
   /// brief Get name.
   /// \return Returns user's name.
   std::string GetName() const noexcept {
@@ -77,8 +83,8 @@ class User {
 
   /// \brief Set surname.
   /// \param[in] surname.
-  void SetSurname(const std::string &surname);
-  void SetSurname(std::string &&surname);
+  // void SetSurname(const std::string &surname);
+  // void SetSurname(std::string &&surname);
 
   /// \brief Get surname.
   /// \return Returns user's surname.
