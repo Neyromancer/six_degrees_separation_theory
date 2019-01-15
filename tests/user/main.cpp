@@ -16,6 +16,26 @@
 // User user_;
 //};
 
+TEST (UserClassTest, UserConstructorEvalation) {
+  std::string name = "user1_name";
+  std::string surname = "user1_surname";
+  User user1(name, surname);
+  
+  EXPECT_EQ(user1.GetName(), name);
+  EXPECT_EQ(user1.GetSurname(), surname);
+  EXPECT_EQ(user1.GetId(), surname);
+}
+
+TEST (UserClassTest, SetNameAndSurnameEvaluation) {
+  User user1;
+  std::string name = "user1_name";
+  std::string surname = "user1_surname";
+  user1.SetNameAndSurname(name, surname);
+  
+  EXPECT_EQ(user1.GetName(), name);
+  EXPECT_EQ(user1.GetSurname(), surname);
+}
+
 TEST (UserClassTest, UserIdEvaluation) {
   User user1("User1", "User1");
   User user2("User2", "User2");
