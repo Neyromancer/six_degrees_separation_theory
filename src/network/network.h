@@ -94,12 +94,8 @@ class Network {
 
   /// \brief Print users from network.
   inline void PrintWholeNetwork() const noexcept {
-    for (const auto &u : network_) {
-      std::cout << "user id: " << u.GetId() << std::endl;
-      std::cout << "user name: " << u.GetName() << std::endl;
-      std::cout << "user surname: " << u.GetSurname() << std::endl;
-      std::cout << "user connections: " << u.GetNumberOfConnections() << std::endl;
-    }
+    for (const auto &u : network_)
+      std::cout << u << std::endl;
   }
 
   /// \brief Print user with passed id.
