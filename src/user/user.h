@@ -71,10 +71,16 @@ class User {
   /// \return Standrat output.
   friend std::ostream &operator<<(std::ostream &out, const User &user);
 
+  /// \brief Set name and surname.
+  /// \param[in] name Name.
+  /// \param[in] surname Surname.
+  SetNameAndSurname(const std::string &name, const std::string &surname);
+  SetNameAndSurname(std::string &&name, std::string &&surname);
+
   /// \brief Set name.
   /// \param[in] name Name.
-  void SetName(const std::string &name);
-  void SetName(std::string &&name);
+  // void SetName(const std::string &name);
+  // void SetName(std::string &&name);
 
   /// brief Get name.
   /// \return Returns user's name.
@@ -84,8 +90,8 @@ class User {
 
   /// \brief Set surname.
   /// \param[in] surname.
-  void SetSurname(const std::string &surname);
-  void SetSurname(std::string &&surname);
+  // void SetSurname(const std::string &surname);
+  // void SetSurname(std::string &&surname);
 
   /// \brief Get surname.
   /// \return Returns user's surname.
