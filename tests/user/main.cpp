@@ -25,6 +25,27 @@ TEST (UserClassTest, UserIdEvaluation) {
   EXPECT_EQ(user3.GetId(), 3);
 }
 
+TEST (UserClassTest, IncreaseConnectionsEvaluation) {
+  User1 user1("User1", "User1");
+  EXPECT_EQ(user1.GetNumberOfConnections(), 0);
+  for (int i = 1; i < 5; ++i) {
+    user1.SetConnection(i);
+    EXPECT_EQ(user1.GetNumberOfConnections(), i);
+  }
+}
+
+TEST (UserClassTest, DecreaseConnectionsEvaluation) {
+  User1 user1("User1", "User1");
+  for (int i = 1; i <= 5; ++i)
+    user1.SetConnection(i);
+
+  EXPECT_EQ(user1.GetNumberOfConnections(), 5);
+  for (int i = 1; i <= 5; ++i) {
+    user1.RemoveConnection(i);
+    EXPECT_EQ(user1.GetNumberOfConnections(), i);
+  }
+}
+
 TEST (UserClassTest, ConnectionSizeEvaluation) {
   User user("Umer", "Mansoor");
   EXPECT_EQ(user.GetNumberOfConnections(), 0);

@@ -49,9 +49,8 @@ void User::SetConnection(const uint64_t id) {
 }
 
 void User::RemoveConnection(const uint64_t id) {
-  //if (connections_.empty())
-  //  throw(); throw something here.
-  connections_.erase(id);
+  if (!connections_.empty())
+    connections_.erase(id);
 }
 
 }  // six_degree_separation_theory
