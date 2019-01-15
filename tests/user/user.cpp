@@ -12,9 +12,10 @@ User::User() : name_{}, surname_{} {}
 
 User::User(std::string name, std::string surname) : name_(name),
            surname_(surname) {
-  static uint64_t count_created_users{0};
-  /// check for type overflow
-  SetId(++count_created_users);
+  // static uint64_t count_created_users{0};
+  // check for type overflow
+  // SetId(++count_created_users);
+  SetId();
 }
 
 std::ostream &operator<<(std::ostream &out, const User &user) {
@@ -24,24 +25,41 @@ std::ostream &operator<<(std::ostream &out, const User &user) {
              << "user connections: " << user.GetNumberOfConnections();
 }
 
-void  User::SetName(const std::string &name) {
+void User::SetNameAndSurname(const std::string &name, 
+                             const std::string &surname) {
   name_ = name;
+  surname_ = surname;
+
+  SetId();
 }
 
-void User::SetName(std::string &&name) {
+void User::SetNameAndSurname(std::string &&name, std::string &&surname) {
   name_ = name;
-}
-
-void User::SetSurname(const std::string &surname) {
   surname_ = surname;
+
+  SetId();
 }
 
-void User::SetSurname(std::string &&surname) {
-  surname_ = surname;
-}
+//void  User::SetName(const std::string &name) {
+//  name_ = name;
+//}
+//
+//void User::SetName(std::string &&name) {
+//  name_ = name;
+//}
+//
+//void User::SetSurname(const std::string &surname) {
+//  surname_ = surname;
+//}
+//
+//void User::SetSurname(std::string &&surname) {
+//  surname_ = surname;
+//}
 
-void User::SetId(const uint64_t id) {
-  id_ = id;
+void User::SetId(/* const uint64_t id */) {
+  static uint64_t count_created_users{0};
+  // check for type overflow
+  id_ = ++count_created_users;
 }
 
 void User::SetConnection(const uint64_t id) {
@@ -49,9 +67,8 @@ void User::SetConnection(const uint64_t id) {
 }
 
 void User::RemoveConnection(const uint64_t id) {
-  //if (connections_.empty())
-  //  throw(); throw something here.
-  connections_.erase(id);
+  if (!connections_.empty())
+    connections_.erase(id);
 }
 
 }  // six_degree_separation_theory

@@ -74,8 +74,8 @@ class User {
   /// \brief Set name and surname.
   /// \param[in] name Name.
   /// \param[in] surname Surname.
-  SetNameAndSurname(const std::string &name, const std::string &surname);
-  SetNameAndSurname(std::string &&name, std::string &&surname);
+  void SetNameAndSurname(const std::string &name, const std::string &surname);
+  void SetNameAndSurname(std::string &&name, std::string &&surname);
 
   /// \brief Set name.
   /// \param[in] name Name.
@@ -101,7 +101,7 @@ class User {
 
   /// \brief Set id.
   /// \param[in] id.
-  void SetId(const uint64_t id);
+  void SetId(/*const uint64_t id*/);
   
   /// \brief Get id.
   /// \return Returns user's id.
