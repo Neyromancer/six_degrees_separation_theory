@@ -101,7 +101,7 @@ class User {
 
   /// \brief Set id.
   /// \param[in] id.
-  void SetId(/*const uint64_t id*/);
+  void SetId();
   
   /// \brief Get id.
   /// \return Returns user's id.

@@ -12,9 +12,6 @@ User::User() : name_{}, surname_{} {}
 
 User::User(std::string name, std::string surname) : name_(name),
            surname_(surname) {
-  // static uint64_t count_created_users{0};
-  // check for type overflow
-  // SetId(++count_created_users);
   SetId();
 }
 
@@ -34,29 +31,14 @@ void User::SetNameAndSurname(const std::string &name,
 }
 
 void User::SetNameAndSurname(std::string &&name, std::string &&surname) {
+  // validate name and surname
   name_ = name;
   surname_ = surname;
 
   SetId();
 }
 
-//void  User::SetName(const std::string &name) {
-//  name_ = name;
-//}
-//
-//void User::SetName(std::string &&name) {
-//  name_ = name;
-//}
-//
-//void User::SetSurname(const std::string &surname) {
-//  surname_ = surname;
-//}
-//
-//void User::SetSurname(std::string &&surname) {
-//  surname_ = surname;
-//}
-
-void User::SetId(/* const uint64_t id */) {
+void User::SetId() {
   static uint64_t count_created_users{0};
   // check for type overflow
   id_ = ++count_created_users;
