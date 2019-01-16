@@ -29,10 +29,8 @@ void Network::SetUserById(const uint64_t id, const uint64_t connection_id = 0,
                           const std::string &surname = {}) {
   for (auto &u : network_) {
     if (u.GetId() == id) {
-      if (!name.empty())
-        u.SetName(name);
-      if (!surname.empty())
-        u.SetSurname(surname);
+      if (!name.empty() && !surname.empty())
+        u.SetNameAndSurname(name, surname);
       if (connection_id)
         u.SetConnection(connection_id);
     } // else throw if user not found.
