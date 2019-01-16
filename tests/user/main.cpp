@@ -9,21 +9,11 @@
 
 #include "user.h"
 
-//class UserTest : public ::testing::Test {
-// protected:
-//  void SetUp override {
-//    user.
-//  }
-//
-// User user_;
-//};
-
 namespace six_degrees_separation_theory {
 
 TEST (UserClassTest, UserConstructorEvalation) {
   std::string name = "user1_name";
   std::string surname = "user1_surname";
-  //six_degrees_separation_theory::User user1(name, surname);
   User user1(name, surname);
   
   EXPECT_EQ(user1.GetName(), name);
@@ -33,31 +23,27 @@ TEST (UserClassTest, UserConstructorEvalation) {
 
 TEST (UserClassTest, SetNameAndSurnameEvaluation) {
   User user1;
-  //six_degrees_separation_theory::User user1;
   std::string name = "user1_name";
   std::string surname = "user1_surname";
   user1.SetNameAndSurname(name, surname);
   
   EXPECT_EQ(user1.GetName(), name);
   EXPECT_EQ(user1.GetSurname(), surname);
+  EXPECT_EQ(user1.GetId(), 2);
 }
 
 TEST (UserClassTest, UserIdEvaluation) {
-  //six_degrees_separation_theory::User user1("User1", "User1");
-  //six_degrees_separation_theory::User user2("User2", "User2");
-  //six_degrees_separation_theory::User user3("User3", "User3");
-  
   User user1("User1", "User1");
-  User user2("User2", "User2");
-  User user3("User3", "User3");
+  EXPECT_EQ(user1.GetId(), 3);
 
-  EXPECT_EQ(user1.GetId(), 1);
-  EXPECT_EQ(user2.GetId(), 2);
-  EXPECT_EQ(user3.GetId(), 3);
+  User user2("User2", "User2");
+  EXPECT_EQ(user2.GetId(), 4);
+
+  User user3("User3", "User3");
+  EXPECT_EQ(user3.GetId(), 5);
 }
 
 TEST (UserClassTest, IncreaseConnectionsEvaluation) {
-  //six_degrees_separation_theory::User user1("User1", "User1");
   User user1("User1", "User1");
   EXPECT_EQ(user1.GetNumberOfConnections(), 0);
   for (auto i = 1; i < 5; ++i) {
@@ -67,20 +53,18 @@ TEST (UserClassTest, IncreaseConnectionsEvaluation) {
 }
 
 TEST (UserClassTest, DecreaseConnectionsEvaluation) {
-  //six_degrees_separation_theory::User user1("User1", "User1");
   User user1("User1", "User1");
   for (int i = 1; i <= 5; ++i)
     user1.SetConnection(i);
 
   EXPECT_EQ(user1.GetNumberOfConnections(), 5);
-  for (int i = 1; i <= 5; ++i) {
-    user1.RemoveConnection(i);
+  for (int i = 5; i >= 1; --i) {
     EXPECT_EQ(user1.GetNumberOfConnections(), i);
+    user1.RemoveConnection(i);
   }
 }
 
 TEST (UserClassTest, ConnectionSizeEvaluation) {
-  //six_degrees_separation_theory::User user("Umer", "Mansoor");
   User user("Umer", "Mansoor");
   EXPECT_EQ(user.GetNumberOfConnections(), 0);
 
