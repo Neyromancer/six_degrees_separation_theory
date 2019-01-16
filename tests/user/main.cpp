@@ -3,6 +3,8 @@
 /// \author Kormulev Dmitry <dmitry.kormulev@yandex.ru>
 /// \date 13.01.2019
 
+#include <string>
+
 #include <gtest/gtest.h>
 
 #include "user.h"
@@ -21,7 +23,7 @@ namespace six_degrees_separation_theory {
 TEST (UserClassTest, UserConstructorEvalation) {
   std::string name = "user1_name";
   std::string surname = "user1_surname";
-  // six_degrees_separation_theory::User user1(name, surname);
+  //six_degrees_separation_theory::User user1(name, surname);
   User user1(name, surname);
   
   EXPECT_EQ(user1.GetName(), name);
@@ -58,14 +60,14 @@ TEST (UserClassTest, IncreaseConnectionsEvaluation) {
   //six_degrees_separation_theory::User user1("User1", "User1");
   User user1("User1", "User1");
   EXPECT_EQ(user1.GetNumberOfConnections(), 0);
-  for (int i = 1; i < 5; ++i) {
+  for (auto i = 1; i < 5; ++i) {
     user1.SetConnection(i);
     EXPECT_EQ(user1.GetNumberOfConnections(), i);
   }
 }
 
 TEST (UserClassTest, DecreaseConnectionsEvaluation) {
-  // six_degrees_separation_theory::User user1("User1", "User1");
+  //six_degrees_separation_theory::User user1("User1", "User1");
   User user1("User1", "User1");
   for (int i = 1; i <= 5; ++i)
     user1.SetConnection(i);
