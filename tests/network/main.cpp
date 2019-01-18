@@ -65,6 +65,42 @@ TEST (NetworkClassTest, IsUserExist) {
   EXPECT_TRUE(network.IsUserExist(name1, surname1));
 }
 
+TEST (NetworkClassTest, IsIdExistEvaluation) {
+  Network network;
+  std::string name1 = "User1_name";
+  std::string surname1 = "User1_surname";
+  network.CreateAndAddUserToNetwork(name1, surname1);
+
+  std::string name2 = "User2_name";
+  std::string surname2 = "User2_surname";
+  network.CreateAndAddUserToNetwork(name2, surname2);
+  std::string test_name = "User_name_test";
+  std::string test_surname = "User_surname_test";
+  network.SetUserById(2, 1, test_name, test_surname);
+
+  network.RemoveUserById(1);
+
+  EXPECT_TRUE(!network.IsIdExist(1));
+}
+
+TEST (NetworkClassTest, RemoveUserByNameEvaluation) {
+  Network network;
+  std::string name1 = "User1_name";
+  std::string surname1 = "User1_surname";
+  network.CreateAndAddUserToNetwork(name1, surname1);
+
+  std::string name2 = "User2_name";
+  std::string surname2 = "User2_surname";
+  network.CreateAndAddUserToNetwork(name2, surname2);
+  std::string test_name = "User_name_test";
+  std::string test_surname = "User_surname_test";
+  network.SetUserById(2, 1, test_name, test_surname);
+
+  network.RemoveUserByName(name1);
+
+  EXPECT_TRUE(!network.IsUserExist(name1, surname1));
+}
+
 } // six_degree_separation_theory
 
 int main(int argc, char **argv) {
