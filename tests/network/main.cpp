@@ -37,6 +37,16 @@ TEST (NetworkClassTest, SetUserByIdEvaluation) {
   EXPECT_TRUE(newtowrk.IsUserExist(test_name, test_surname));
 }
 
+TEST (NetworkClassTest, GetUserByIdEvaluation) {
+  Network network;
+  std::string name1 = "User1_name";
+  std::string surname1 = "User1_surname";
+  network.CreateAndAddUserToNetwork(name1, surname1);
+ 
+  EXPECT_EQ(network.GetUserById(1).GetName(), name1);
+  EXPECT_EQ(networl.GetUserById(1).GetSurname(), surname1);
+}
+
 } // six_degree_separation_theory
 
 int main(int argc, char **argv) {
