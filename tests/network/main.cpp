@@ -149,6 +149,27 @@ TEST (NetworkClassTest, RemoveConnectionEvaluation) {
   EXPECT_EQ(network.GetUserById(1).GetConnections(), 1);
 }
 
+TEST (NetworkClassTest, AreUserConnectedEvaluation) {
+  Network network;
+  std::string name1 = "User1_name";
+  std::string surname1 = "User1_surname";
+  network.CreateAndAddUserToNetwork(name1, surname1);
+
+  std::string name2 = "User2_name";
+  std::string surname2 = "User2_surname";
+  network.CreateAndAddUserToNetwork(name2, surname2);
+
+  network.AddConnection(1, 2);
+
+  EXPECT_TRUE(network.AreUsersConnected(1, 2));
+
+  std::string name3 = "User3_name";
+  std::string surname3 = "User3_surname";
+  network.CreateAndAddUserToNetwork(name3, surname3);
+
+  EXPECT_TRUE(!network.AreUserConnected(1, 3));
+}
+
 } // six_degree_separation_theory
 
 int main(int argc, char **argv) {
