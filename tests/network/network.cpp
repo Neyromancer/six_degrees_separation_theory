@@ -1,7 +1,7 @@
 /// \file network.cpp
 /// \brief Source file for class Networ.
 /// \author Dmitry Kormulev.
-/// \version 1.0.0.1.
+/// \version 1.0.0.1
 /// \date 10.01.2019
 
 #include "network.h"

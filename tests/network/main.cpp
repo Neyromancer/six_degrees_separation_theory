@@ -1,7 +1,8 @@
 /// \file main.cpp
 /// \brief Unit-tests for class Netowrk.
 /// \author Kormulev Dmitry <dmitry.kormulev@yandex.ru>
-/// \date 16.01.2019
+/// \version 1.0.0.1
+/// \date 18.01.2019
 
 #include <string>
 
@@ -13,10 +14,27 @@ namespace six_degrees_separation_theory {
 
 TEST (NetworkClassTest, CreateAndAddUserToNetwork) {
   Network network;
-  std::string name = "User1_name";
-  std::string surname = "User1_surname";
-  network.CreateAndAddUserToNetwork(name, surname);
-  EXPECT_TRUE(network.IsUserExist(name, surname));
+  std::string name1 = "User1_name";
+  std::string surname1 = "User1_surname";
+  network.CreateAndAddUserToNetwork(name1, surname1);
+
+  EXPECT_TRUE(network.IsUserExist(name1, surname1));
+}
+
+TEST (NetworkClassTest, SetUserByIdEvaluation) {
+  Network network;
+  std::string name1 = "User1_name";
+  std::string surname1 = "User1_surname";
+  network.CreateAndAddUserToNetwork(name1, surname1);
+
+  std::string name2 = "User2_name";
+  std::string surname2 = "User2_surname";
+  network.CreateAndAddUserToNetwork(name2, surname2);
+  std::string test_name = "User_name_test";
+  std::string test_surname = "User_surname_test";
+  network.SetUserById(2, 1, test_name, test_surname);
+
+  EXPECT_TRUE(newtowrk.IsUserExist(test_name, test_surname));
 }
 
 } // six_degree_separation_theory
