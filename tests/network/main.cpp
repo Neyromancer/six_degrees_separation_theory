@@ -74,9 +74,6 @@ TEST (NetworkClassTest, IsIdExistEvaluation) {
   std::string name2 = "User2_name";
   std::string surname2 = "User2_surname";
   network.CreateAndAddUserToNetwork(name2, surname2);
-  std::string test_name = "User_name_test";
-  std::string test_surname = "User_surname_test";
-  network.SetUserById(2, 1, test_name, test_surname);
 
   network.RemoveUserById(1);
 
@@ -92,8 +89,6 @@ TEST (NetworkClassTest, RemoveUserByNameEvaluation) {
   std::string name2 = "User2_name";
   std::string surname2 = "User2_surname";
   network.CreateAndAddUserToNetwork(name2, surname2);
-  std::string test_name = "User_name_test";
-  std::string test_surname = "User_surname_test";
 
   network.RemoveUserByName(name1);
 
@@ -109,12 +104,29 @@ TEST (NetworkClassTest, RemoveUserBySurnameEvaluation) {
   std::string name2 = "User2_name";
   std::string surname2 = "User2_surname";
   network.CreateAndAddUserToNetwork(name2, surname2);
-  std::string test_name = "User_name_test";
-  std::string test_surname = "User_surname_test";
 
   network.RemoveUserBySurname(surname1);
 
   EXPECT_TRUE(!network.IsUserExist(name1, surname1));
+}
+
+TEST (NetworkClassTest, AddConnectionEvaluation) {
+  Network network;
+  std::string name1 = "User1_name";
+  std::string surname1 = "User1_surname";
+  network.CreateAndAddUserToNetwork(name1, surname1);
+
+  std::string name2 = "User2_name";
+  std::string surname2 = "User2_surname";
+  network.CreateAndAddUserToNetwork(name2, surname2);
+
+  std::string name3 = "User3_name";
+  std::string surname3 = "User3_surname";
+  network.CreateAndAddUserToNetwork(name3, surname3);
+  network.AddConnection(1, 2);
+  network.AddConnection(1, 3);
+
+  EXPECT_EQ(network.GetUserById(1).GetConnections(),2);
 }
 
 } // six_degree_separation_theory
