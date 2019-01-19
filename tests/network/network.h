@@ -95,10 +95,7 @@ class Network {
   void RemoveUserBySurname(std::string &&surname);
 
   /// \brief Print users from network.
-  inline void PrintWholeNetwork() const noexcept {
-    for (const auto &u : network_)
-      std::cout << u << std::endl;
-  }
+  void PrintWholeNetwork() const noexcept;
 
   /// \brief Print user with passed id.
   /// \param[in] id ID.
