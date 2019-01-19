@@ -1,8 +1,8 @@
 /// \file user.h
 /// \brief Class which represents user.
 /// \author Kormulev Dmitry <dmitry.kormulev@yandex.ru>
-/// \version 1.0.0.1
-/// \date 08.01.2019
+/// \version 1.0.0.2
+/// \date 18.01.2019
 
 #ifndef SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
 #define SIX_DEGREES_SEPARATION_THEORY_USER_USER_H_
@@ -28,7 +28,7 @@ class User {
   explicit User(std::string name, std::string surname);
 
   /// \brief User class destructor.
-  ~User() = default;
+  ~User();
 
   /// \brief User class copy constructor.
   /// \param[in] user User class object.
@@ -101,7 +101,7 @@ class User {
 
   /// \brief Set id.
   /// \param[in] id.
-  void SetId();
+  void SetId(/*const uint64_t id*/);
   
   /// \brief Get id.
   /// \return Returns user's id.
@@ -132,7 +132,8 @@ class User {
  private:
   std::string name_;
   std::string surname_;
-  uint64_t id_{0};
+  static uint64_t counter_;
+  uint64_t id_{};
   std::set<uint64_t> connections_{};
 };
 }  // namespace six_degrees_separation_theory
