@@ -140,34 +140,41 @@ void Network::RemoveUserBySurname(std::string &&surname) {
     network_.remove(tmp);
 }
 
+void Network::PrintWholeNetwork() const noexcept {
+  if (!network_.empty()) {
+    for (const auto &u : network_)
+      std::cout << *u << std::endl;
+  }
+}
+
 void Network::PrintUserById(const uint64_t id) const noexcept {
   for (const auto &u : network_)
     if (u->GetId() == id)
-      std::cout << u;
+      std::cout << *u;
 }
 
 void Network::PrintUserByName(const std::string &name) const noexcept {
   for (const auto &u : network_)
     if (u->GetName() == name)
-      std::cout << u;
+      std::cout << *u;
 }
 
 void Network::PrintUserByName(std::string &&name) const noexcept {
   for (const auto &u : network_)
     if (u->GetName() == name)
-      std::cout << u;
+      std::cout << *u;
 }
 
 void Network::PrintUserBySurname(const std::string &surname) const noexcept { 
   for (const auto &u : network_)
     if (u->GetSurname() == surname)
-      std::cout << u;
+      std::cout << *u;
 }
 
 void Network::PrintUserBySurname(std::string &&surname) const noexcept{
   for (const auto &u : network_)
     if (u->GetSurname() == surname)
-      std::cout << u;
+      std::cout << *u;
 }
 
 void Network::PrintConnectionsAtDepth(const uint64_t id, const uint64_t depth) {
