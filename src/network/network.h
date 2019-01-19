@@ -1,15 +1,16 @@
 /// \file network.h
 /// \brief Class which represents user's network.
 /// \author Dmitry Kormulev.
-/// \version 1.0.0.0
-/// \date 09.01.2019
+/// \version 1.0.0.1
+/// \date 19.01.2019
 
 #ifndef SIX_DEGREES_SEPARATION_THEORY_NETWORK_NETWORK_H_
 #define SIX_DEGREES_SEPARATION_THEORY_NETWORK_NETWORK_H_
 
 #include <cstdint>
-#include <list>
 #include <iostream>
+#include <list>
+#include <memory>
 #include <set>
 #include <string>
 
@@ -153,7 +154,7 @@ class Network {
   /// \return Resutl of the check if ID used.
   bool IsIdUsed(const uint64_t id) const noexcept;
 
-  std::list<User> network_{};
+  std::list<std::shared_ptr<User>> network_{};
   std::set<uint64_t> used_id_{};
 };
 }  // namespace six_degrees_separation_theory.
